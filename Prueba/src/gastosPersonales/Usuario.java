@@ -5,11 +5,9 @@ import java.util.*;
 
 public class Usuario implements Persona {
 
-    Scanner scan = new Scanner(System.in);
     private String nombre;
     private String fechaNacimiento;
     private String dni;
-    public static final String DNI = "^[0-9]{8}[A-Z]$";
 
     public Usuario(String nombre, String fechaNacimiento, String dni) {
         this.nombre = nombre;
@@ -17,27 +15,14 @@ public class Usuario implements Persona {
         this.dni = dni;
     }
 
-    public void validarDni() { // Validcion del dni
-        boolean entradaValida = false;
-        while (!entradaValida) {
-            System.out.print("Dime tu dni: ");
-            dni = scan.nextLine().trim().toUpperCase();
-            if (dni.matches(DNI)) {
-                entradaValida = true;
-            } else {
-                System.out.println("dni no valido");
-            }
-        }
-    }
-
     @Override
     public int calcularEdad() {
-        throw new UnsupportedOperationException("Unimplemented method 'calcularEdad'");
+        return 0;
     }
 
     @Override
     public String saludar() {
-        throw new UnsupportedOperationException("Unimplemented method 'saludar'");
+        return "Bienvenido al programa de gestión de gastos personales" + nombre;
     }
 
     public String getNombre() {
@@ -60,8 +45,12 @@ public class Usuario implements Persona {
         return dni;
     }
 
-    public void setDni(String dni) {
-        this.dni = dni;
+    public boolean setDni(String dni) {
+        if (DepurarDni.validarDni(dni)) {
+            this.dni = dni;
+            return true;
+        } else {
+            return false;
+        }
     }
-
 }
