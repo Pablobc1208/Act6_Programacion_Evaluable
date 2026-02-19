@@ -53,4 +53,10 @@ public class Usuario implements Persona {
             return false;
         }
     }
+
+    @Override
+    public String toString() {
+        return "Tu dni es: " + dni + " " + getDni() +
+                "Tu nombre es: " + nombre + "Tu edad es: " + calcularEdad();
+    }
 }
