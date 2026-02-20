@@ -1,7 +1,7 @@
 package gastosPersonales;
 
-import tools.*;
-import java.time.*;
+import tools.*; //Importamos el package tools
+import java.time.*; //Importamos libreria time
 
 public class Usuario implements Persona {
 
@@ -18,7 +18,26 @@ public class Usuario implements Persona {
 
     @Override
     public int calcularEdad() {
-        return 0;
+        // 1. Separar y convertir
+        String[] partes = fechaNacimiento.split("/");
+        int dia = Integer.parseInt(partes[0]);
+        int mes = Integer.parseInt(partes[1]);
+        int anio = Integer.parseInt(partes[2]);
+
+        // 2. Obtener día, mes y año ACTUALES
+        LocalDate hoy = LocalDate.now();
+        int diaActual = hoy.getDayOfMonth();
+        int mesActual = hoy.getMonthValue();
+        int anioActual = hoy.getYear();
+
+        // 3. Restar los años directamente
+        int edad = anioActual - anio;
+
+        // 4. Ajustar si aún no ha llegado su cumpleaños este año
+        if (mesActual < mes || (mesActual == mes && diaActual < dia)) {
+            edad--; // Le restamos 1 a la edad
+        }
+        return edad;
     }
 
     @Override
