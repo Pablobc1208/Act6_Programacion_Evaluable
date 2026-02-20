@@ -1,7 +1,7 @@
 package gastosPersonales;
 
 import tools.*;
-import java.util.*;
+import java.time.*;
 
 public class Usuario implements Persona {
 
@@ -39,7 +39,7 @@ public class Usuario implements Persona {
     }
 
     public boolean setFechaNacimiento(String fechaNacimiento) {
-        if (fechaNacimiento.matches(FECHADEP)) {
+        if (DepurarFecha.validarFechaCompleta(fechaNacimiento)) {
             this.fechaNacimiento = fechaNacimiento;
             return true;
         } else {
