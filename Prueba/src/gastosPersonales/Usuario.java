@@ -8,6 +8,7 @@ public class Usuario implements Persona {
     private String nombre;
     private String fechaNacimiento;
     private String dni;
+    public static final String FECHADEP = "^(0[1-9]|1[0-9]|2[0-9]|3[01])/(0[1-9]|1[0-2])/([12][0-9]{3})$";
 
     public Usuario(String nombre, String fechaNacimiento, String dni) {
         this.nombre = nombre;
@@ -37,8 +38,13 @@ public class Usuario implements Persona {
         return fechaNacimiento;
     }
 
-    public void setFechaNacimiento(String fechaNacimiento) {
-        this.fechaNacimiento = fechaNacimiento;
+    public boolean setFechaNacimiento(String fechaNacimiento) {
+        if (fechaNacimiento.matches(FECHADEP)) {
+            this.fechaNacimiento = fechaNacimiento;
+            return true;
+        } else {
+            return false;
+        }
     }
 
     public String getDni() {
