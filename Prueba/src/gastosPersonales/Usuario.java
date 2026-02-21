@@ -8,8 +8,7 @@ public class Usuario implements Persona {
     private String nombre;
     private String fechaNacimiento;
     private String dni;
-    public static final String FECHADEP = "^(0[1-9]|1[0-9]|2[0-9]|3[01])/(0[1-9]|1[0-2])/([12][0-9]{3})$";
-
+    
     public Usuario(String nombre, String fechaNacimiento, String dni) { // Constructor
         this.nombre = nombre;
         this.fechaNacimiento = fechaNacimiento;
