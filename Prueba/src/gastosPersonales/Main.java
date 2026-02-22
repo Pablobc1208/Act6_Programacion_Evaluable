@@ -102,7 +102,7 @@ public class Main {
                     break;
                 case 0:
                     // Case 0 que acaba el programa
-                    System.out.println(AMARILLO + "Fin del programa.\nGracias por utilizar la aplicación.");
+                    System.out.println(AMARILLO + "Fin del programa.\nGracias por utilizar la aplicación." + RESET);
                     break;
                 default:
                     System.out.println("Opción no válida. Inténtalo de nuevo.");
