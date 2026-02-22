@@ -42,7 +42,7 @@ public class Usuario implements Persona { // Implementamos Interfaz
     // Metodos Getters y Setters
     @Override
     public String saludar() {
-        return "Bienvenido al programa de gestión de gastos personales" + nombre;
+        return "Bienvenido al programa de gestión de gastos personales " + nombre;
     }
 
     public String getNombre() {

@@ -13,13 +13,13 @@ public class Main {
         // Creamos un usuario vacio al que le iremos metiendo los datos
         Usuario usuario = new Usuario("", "", "");
 
-        // Creación del usuario y sus datos
-        System.out.println("Introduce tu nombre:");
+        // Creacion del usuario y sus datos
+        System.out.print("Introduce tu nombre: ");
         usuario.setNombre(scan.nextLine());
 
         boolean fechaCorrecta = false;
         while (!fechaCorrecta) { // Depuracion de fechas
-            System.out.println("Introduce tu fecha de nacimiento (dd/MM/yyyy):");
+            System.out.print("Introduce tu fecha de nacimiento (dd/MM/yyyy): ");
             fechaCorrecta = usuario.setFechaNacimiento(scan.nextLine());
             if (!fechaCorrecta) {
                 System.out.println("La fecha introducida no es válida o no tiene el formato correcto.");
@@ -28,7 +28,7 @@ public class Main {
 
         boolean dniCorrecto = false;
         while (!dniCorrecto) { // Depuracion DNI
-            System.out.println("Introduce tu DNI (Ejemplo: 12345678 A):");
+            System.out.print("Introduce tu DNI (Ejemplo: 12345678A): ");
             dniCorrecto = usuario.setDni(scan.nextLine());
             if (!dniCorrecto) {
                 System.out.println(
@@ -57,15 +57,15 @@ public class Main {
             System.out.println("5 Mostrar saldo");
             System.out.println("0 Salir");
 
-            opcion = DepurarScan.scanInt("");
+            opcion = DepurarScan.scanInt("Introduce la opcion que quieras: ");
 
             switch (opcion) {
                 case 1:
-                    System.out.println("Introduce la descripción del gasto:");
+                    System.out.print("Introduce la descripción del gasto: ");
                     String descGasto = scan.nextLine();
                     double cantGasto = DepurarScan.scanDouble("Introduce la cantidad del gasto: ");
 
-                    // Llama al método añadir gastos
+                    // Llama al metodo añadir gastos
                     if (cantGasto > cuenta.getSaldo() || cuenta.getSaldo() < 0) {
                         System.out.println("No es posible gestionar este gasto. Saldo Insuficiente !!!!!!");
                     } else {
@@ -76,7 +76,7 @@ public class Main {
 
                     break;
                 case 2:
-                    System.out.println("Introduce la descripción del ingreso:");
+                    System.out.print("Introduce la descripción del ingreso: ");
                     String descIngreso = scan.nextLine();
                     double cantIngreso = DepurarScan.scanDouble("Introduce la cantidad del ingreso: ");
 
@@ -97,8 +97,8 @@ public class Main {
                     }
                     break;
                 case 5:
-                    System.out.println("El saldo actual de la cuenta es: " + cuenta.getSaldo() + "€"); // Mostramos
-                                                                                                       // Saldo
+                    // Mostramos saldo
+                    System.out.println("El saldo actual de la cuenta es: " + cuenta.getSaldo() + "€");
                     break;
                 case 0:
                     // Case 0 que acaba el programa
