@@ -24,8 +24,8 @@ public class Cuenta {
         if (saldo < 0 || cantidad > saldo) {
             return saldo;
         } else {
-            saldo = saldo - cantidad;
             gastos.add(new Gastos(cantidad, descripcion));
+            saldo = saldo - cantidad;
             return saldo;
         }
     }
