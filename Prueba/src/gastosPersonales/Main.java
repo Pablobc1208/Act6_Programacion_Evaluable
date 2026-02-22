@@ -30,8 +30,7 @@ public class Main {
             System.out.println("Introduce tu DNI (Ejemplo: 12345678 A):");
             dniCorrecto = usuario.setDni(scan.nextLine());
             if (!dniCorrecto) {
-                System.out.println(
-                        "El DNI introducido no es correcto o le falta el espacio antes de la letra en mayúscula.");
+                System.out.println("El DNI introducido no es correcto o le falta el espacio antes de la letra en mayúscula.");
             }
         }
 
