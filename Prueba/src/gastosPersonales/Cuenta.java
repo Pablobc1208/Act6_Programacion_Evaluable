@@ -3,29 +3,34 @@ package gastosPersonales;
 import java.util.ArrayList;
 
 public class Cuenta {
+    // Declaracion de Atributos
     private double saldo;
     private Usuario usuario;
     private ArrayList<Gastos> gastos = new ArrayList<>();
     private ArrayList<Ingreso> ingreso = new ArrayList<>();
 
-    public Cuenta(Usuario usaurio) {
+    public Cuenta(Usuario usuario) { // Constructor
         this.saldo = 0;
         this.usuario = usuario;
     }
 
-    public double addIngreso(String descripcion, double cantidad) {
-        return saldo + cantidad;
+    public double addIngreso(String descripcion, double cantidad) { // Metodo Añadir Ingresos
+        ingreso.add(new Ingreso(cantidad, descripcion));
+        saldo = saldo + cantidad;
+        return saldo;
     }
 
-    public void addGastos(String descripcion, double cantidad) {
+    public double addGastos(String descripcion, double cantidad) { // Metodo Añadir Gastos
         if (saldo < 0 || cantidad > saldo) {
-            System.out.println("No se pudo restar el saldo. Saldo insuficiente!!!!!");
+            return saldo;
         } else {
-            double restarSaldo = cantidad - saldo;
-            System.out.println("Tu saldo se ha actualizado correctamente!!!!" + restarSaldo);
+            saldo = saldo - cantidad;
+            gastos.add(new Gastos(cantidad, descripcion));
+            return saldo;
         }
     }
 
+    // Metodos Getters y Setters
     public double getSaldo() {
         return saldo;
     }

@@ -3,12 +3,11 @@ package gastosPersonales;
 import tools.*; //Importamos el package tools
 import java.time.*; //Importamos libreria time
 
-public class Usuario implements Persona {
-
+public class Usuario implements Persona { // Implementamos Interfaz
+    // Declaracion de Atributos
     private String nombre;
     private String fechaNacimiento;
     private String dni;
-    public static final String FECHADEP = "^(0[1-9]|1[0-9]|2[0-9]|3[01])/(0[1-9]|1[0-2])/([12][0-9]{3})$";
 
     public Usuario(String nombre, String fechaNacimiento, String dni) { // Constructor
         this.nombre = nombre;
@@ -18,28 +17,29 @@ public class Usuario implements Persona {
 
     @Override
     public int calcularEdad() { // Metodo para calcular la edad
-        // 1. Separar y convertir
+        // Separar y convertir
         String[] partes = fechaNacimiento.split("/");
         int dia = Integer.parseInt(partes[0]);
         int mes = Integer.parseInt(partes[1]);
         int anio = Integer.parseInt(partes[2]);
 
-        // 2. Obtener día, mes y año ACTUALES
+        // Obtener día, mes y año ACTUALES
         LocalDate hoy = LocalDate.now();
         int diaActual = hoy.getDayOfMonth();
         int mesActual = hoy.getMonthValue();
         int anioActual = hoy.getYear();
 
-        // 3. Restar los años directamente
+        // Restar los años directamente
         int edad = anioActual - anio;
 
-        // 4. Ajustar si aún no ha llegado su cumpleaños este año
+        // Ajustar si aún no ha llegado su cumpleaños este año
         if (mesActual < mes || (mesActual == mes && diaActual < dia)) {
-            edad--; // Le restamos 1 a la edad
+            edad--;
         }
         return edad;
     }
 
+    // Metodos Getters y Setters
     @Override
     public String saludar() {
         return "Bienvenido al programa de gestión de gastos personales" + nombre;
@@ -57,7 +57,7 @@ public class Usuario implements Persona {
         return fechaNacimiento;
     }
 
-    public boolean setFechaNacimiento(String fechaNacimiento) {
+    public boolean setFechaNacimiento(String fechaNacimiento) { // Depuracion de fecha en metodo Set
         if (DepurarFecha.validarFechaCompleta(fechaNacimiento)) {
             this.fechaNacimiento = fechaNacimiento;
             return true;
@@ -70,7 +70,7 @@ public class Usuario implements Persona {
         return dni;
     }
 
-    public boolean setDni(String dni) {
+    public boolean setDni(String dni) { // Depuracion de dni en metodo Set
         if (DepurarDni.validarDni(dni)) {
             this.dni = dni;
             return true;
