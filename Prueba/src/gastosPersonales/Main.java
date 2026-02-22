@@ -5,6 +5,7 @@ import java.util.Scanner;
 
 public class Main {
     public static final String AMARILLO = "\u001B[33m"; // Color amarillo en constante
+    public static final String RESET = "\u001B[0m"; // Para volver al color actual
 
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in); // Declaramos Scanner
@@ -30,7 +31,8 @@ public class Main {
             System.out.println("Introduce tu DNI (Ejemplo: 12345678 A):");
             dniCorrecto = usuario.setDni(scan.nextLine());
             if (!dniCorrecto) {
-                System.out.println("El DNI introducido no es correcto o le falta el espacio antes de la letra en mayúscula.");
+                System.out.println(
+                        "El DNI introducido no es correcto o le falta el espacio antes de la letra en mayúscula.");
             }
         }
 
